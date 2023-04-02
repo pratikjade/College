@@ -1,0 +1,127 @@
+Perform the following
+1. Display all the fields of employee table
+2. Retrieve employee number and their salary
+3. Retrieve average salary of all employee
+4. Retrieve number of employee
+5. Retrieve distinct number of employee
+6. Retrieve total salary of employee group by employee name and count similar names
+7. Retrieve total salary of employee which is greater than >120000
+8. Display name of employee in descending order
+9. Display details of employee whose name is AMIT and salary greater than 50000;
+
+
+
+
+mysql> CREATE TABLE EMPLOYEE1(EMPNO VARCHAR (20),EMP_NAME VARCHAR (20),DEPT VARCHAR (20), SALARY INTEGER, DOJ DATE,BRANCH VARCHAR (20));
+
+mysql> INSERT INTO EMPLOYEE1 VALUES ('E101','AMIT','PRODUCTION','45000','12-3-00','BANGALORE');
+
+
+mysql> INSERT INTO EMPLOYEE1 VALUES ('E102','AMIT','HR','70000','3-7-02','BANGALORE');
+
+
+mysql> INSERT INTO EMPLOYEE1 VALUES ('E103','SUNITA','MANAGEMENT','120000','11-1-01','MYSORE');
+
+
+mysql> INSERT INTO EMPLOYEE1 VALUES ('E105','SUNITA','IT','67000','1-8-01','MYSORE');
+
+
+mysql> INSERT INTO EMPLOYEE1 VALUES ('E106','MAHESH','CIVIL','145000','20-9-03','MUMBAI');
+
+
+mysql> SELECT * FROM EMPLOYEE1;
+
++-------+----------+------------+--------+------------+-----------+
+| EMPNO | EMP_NAME | DEPT       | SALARY | DOJ        | BRANCH    |
++-------+----------+------------+--------+------------+-----------+
+| E101  | AMIT     | PRODUCTION |  45000 | 2012-03-00 | BANGALORE |
+| E102  | AMIT     | HR         |  70000 | 0003-07-02 | BANGALORE |
+| E103  | SUNITA   | MANAGEMENT | 120000 | 2011-01-01 | MYSORE    |
+| E105  | SUNITA   | IT         |  67000 | 0001-08-01 | MYSORE    |
+| E106  | MAHESH   | CIVIL      | 145000 | 2020-09-03 | MUMBAI    |
++-------+----------+------------+--------+------------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT EMPNO,SALARY FROM EMPLOYEE1;
+
+
++-------+--------+
+| EMPNO | SALARY |
++-------+--------+
+| E101  |  45000 |
+| E102  |  70000 |
+| E103  | 120000 |
+| E105  |  67000 |
+| E106  | 145000 |
++-------+--------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT AVG(SALARY)FROM EMPLOYEE1;
+
++-------------+
+| AVG(SALARY) |
++-------------+
+|  89400.0000 |
++-------------+
+1 row in set (0.01 sec)
+
+mysql> SELECT COUNT(*)FROM EMPLOYEE1;
+
++----------+
+| COUNT(*) |
++----------+
+|        5 |
++----------+
+1 row in set (0.01 sec)
+
+mysql> SELECT COUNT(DISTINCT EMP_NAME) FROM EMPLOYEE1;
+
++--------------------------+
+| COUNT(DISTINCT EMP_NAME) |
++--------------------------+
+|                        3 |
++--------------------------+
+1 row in set (0.01 sec)
+
+mysql> SELECT EMP_NAME, SUM(SALARY),COUNT(*) FROM EMPLOYEE1 GROUP BY(EMP_NAME);
+
++----------+-------------+----------+
+| EMP_NAME | SUM(SALARY) | COUNT(*) |
++----------+-------------+----------+
+| AMIT     |      115000 |        2 |
+| SUNITA   |      187000 |        2 |
+| MAHESH   |      145000 |        1 |
++----------+-------------+----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT EMP_NAME, SUM(SALARY) FROM EMPLOYEE1 GROUP BY(EMP_NAME) HAVING SUM(SALARY)>120000;
+
++----------+-------------+
+| EMP_NAME | SUM(SALARY) |
++----------+-------------+
+| SUNITA   |      187000 |
+| MAHESH   |      145000 |
++----------+-------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT EMP_NAME FROM EMPLOYEE1 ORDER BY EMP_NAME DESC;
+
++----------+
+| EMP_NAME |
++----------+
+| SUNITA   |
+| SUNITA   |
+| MAHESH   |
+| AMIT     |
+| AMIT     |
++----------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT*FROM EMPLOYEE1 WHERE EMP_NAME='AMIT' AND SALARY>50000;
+
++-------+----------+------+--------+------------+-----------+
+| EMPNO | EMP_NAME | DEPT | SALARY | DOJ        | BRANCH    |
++-------+----------+------+--------+------------+-----------+
+| E102  | AMIT     | HR   |  70000 | 0003-07-02 | BANGALORE |
++-------+----------+------+--------+------------+-----------+
+1 row in set (0.00 sec)

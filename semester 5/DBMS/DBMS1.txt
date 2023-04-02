@@ -1,0 +1,177 @@
+mysql> create database company;
+Query OK, 1 row affected (0.04 sec)
+
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| company            |
+| ghrcem             |
+| ghrcem1            |
++--------------------+
+12 rows in set (0.06 sec)
+
+mysql> use company;
+Database changed
+mysql> desc company;
+ERROR 1146 (42S02): Table 'company.company' doesn't exist
+
+mysql> CREATE TABLE DEPARTMENT (DNO VARCHAR (20) PRIMARY KEY, DNAME VARCHAR (20),MGRSSN VARCHAR(20), MGRSTARTDATE DATE);
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> CREATE TABLE EMPLOYEE (SSN VARCHAR (20) PRIMARY KEY, FNAME VARCHAR(20), LNAME VARCHAR(20), ADDRESS VARCHAR (20), SEX CHAR (1),SALARY INTEGER, SUPERSSN VARCHAR(20),DNO VARCHAR(20),FOREIGN KEY (SUPERSSN) REFERENCES EMPLOYEE (SSN),FOREIGN KEY (DNO) REFERENCES DEPARTMENT (DNO));
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> ALTER TABLE DEPARTMENT
+    -> ADD FOREIGN KEY (MGRSSN) REFERENCES EMPLOYEE(SSN);
+Query OK, 0 rows affected (0.08 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+
+mysql> ALTER TABLE DEPARTMENT MODIFY MGRSTARTDATE VARCHAR(20);
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO EMPLOYEE (SSN, FNAME,LNAME, ADDRESS, SEX, SALARY) VALUES ('SSN001','BEN', 'SCOTT','US','M', 450000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO EMPLOYEE (SSN, FNAME,LNAME, ADDRESS, SEX, SALARY) VALUES ('SSN002','ADINATH', 'NIKAM','US','M', 550000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO EMPLOYEE (SSN, FNAME,LNAME, ADDRESS, SEX, SALARY) VALUES ('SSN003','AYAZ', 'PACHAPURE','UK','M', 350000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO EMPLOYEE (SSN, FNAME,LNAME, ADDRESS, SEX, SALARY) VALUES ('SSN004','ASHITOSH', 'GOLBANVI','CHINA','M', 250000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO EMPLOYEE (SSN, FNAME,LNAME, ADDRESS, SEX, SALARY) VALUES ('SSN005','DARSHAN', 'PATIL','US','M', 700000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO EMPLOYEE (SSN, FNAME,LNAME, ADDRESS, SEX, SALARY) VALUES ('SSN006','RUPESH', 'NERSEKAR','CHINA','M', 750000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO EMPLOYEE (SSN, FNAME,LNAME, ADDRESS, SEX, SALARY) VALUES ('SSN007','XAVIER', 'DSOUZA','US','M', 400000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO EMPLOYEE (SSN, FNAME,LNAME, ADDRESS, SEX, SALARY) VALUES ('SSN008','DAVID', 'PATRICK','US','M', 300000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM EMPLOYEE
+    -> ;
++--------+----------+-----------+---------+------+--------+----------+------+
+| SSN    | FNAME    | LNAME     | ADDRESS | SEX  | SALARY | SUPERSSN | DNO  |
++--------+----------+-----------+---------+------+--------+----------+------+
+| SSN001 | BEN      | SCOTT     | US      | M    | 450000 | NULL     | NULL |
+| SSN002 | ADINATH  | NIKAM     | US      | M    | 550000 | NULL     | NULL |
+| SSN003 | AYAZ     | PACHAPURE | UK      | M    | 350000 | NULL     | NULL |
+| SSN004 | ASHITOSH | GOLBANVI  | CHINA   | M    | 250000 | NULL     | NULL |
+| SSN005 | DARSHAN  | PATIL     | US      | M    | 700000 | NULL     | NULL |
+| SSN006 | RUPESH   | NERSEKAR  | CHINA   | M    | 750000 | NULL     | NULL |
+| SSN007 | XAVIER   | DSOUZA    | US      | M    | 400000 | NULL     | NULL |
+| SSN008 | DAVID    | PATRICK   | US      | M    | 300000 | NULL     | NULL |
++--------+----------+-----------+---------+------+--------+----------+------+
+8 rows in set (0.01 sec)
+mysql> INSERT INTO DEPARTMENT VALUES ('1','HR','SSN003', '03-01-2022');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO DEPARTMENT VALUES ('2','IT','SSN002', '04-02-2022');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO DEPARTMENT VALUES ('3','ACCOUNTS','SSN005', '05-04-2022');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO DEPARTMENT VALUES ('4','HELPDESK', 'SSN007', '06-06-2022');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO DEPARTMENT VALUES ('5','SALES','SSN004', '2022-01-2022');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM DEPARTMENT;
++-----+----------+--------+--------------+
+| DNO | DNAME    | MGRSSN | MGRSTARTDATE |
++-----+----------+--------+--------------+
+| 1   | HR       | SSN003 | 03-01-2022   |
+| 2   | IT       | SSN002 | 04-02-2022   |
+| 3   | ACCOUNTS | SSN005 | 05-04-2022   |
+| 4   | HELPDESK | SSN007 | 06-06-2022   |
+| 5   | SALES    | SSN004 | 2022-01-2022 |
++-----+----------+--------+--------------+
+5 rows in set (0.00 sec)
+mysql> UPDATE EMPLOYEE SET SUPERSSN=NULL, DNO='3' WHERE SSN='SSN001';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM EMPLOYEE;
++--------+----------+-----------+---------+------+--------+----------+------+
+| SSN    | FNAME    | LNAME     | ADDRESS | SEX  | SALARY | SUPERSSN | DNO  |
++--------+----------+-----------+---------+------+--------+----------+------+
+| SSN001 | BEN      | SCOTT     | US      | M    | 450000 | NULL     | 3    |
+| SSN002 | ADINATH  | NIKAM     | US      | M    | 550000 | NULL     | NULL |
+| SSN003 | AYAZ     | PACHAPURE | UK      | M    | 350000 | NULL     | NULL |
+| SSN004 | ASHITOSH | GOLBANVI  | CHINA   | M    | 250000 | NULL     | NULL |
+| SSN005 | DARSHAN  | PATIL     | US      | M    | 700000 | NULL     | NULL |
+| SSN006 | RUPESH   | NERSEKAR  | CHINA   | M    | 750000 | NULL     | NULL |
+| SSN007 | XAVIER   | DSOUZA    | US      | M    | 400000 | NULL     | NULL |
+| SSN008 | DAVID    | PATRICK   | US      | M    | 300000 | NULL     | NULL |
++--------+----------+-----------+---------+------+--------+----------+------+
+8 rows in set (0.00 sec)
+
+
+mysql> DELETE FROM EMPLOYEE WHERE DNO=3;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEE;
++--------+----------+-----------+---------+------+--------+----------+------+
+| SSN    | FNAME    | LNAME     | ADDRESS | SEX  | SALARY | SUPERSSN | DNO  |
++--------+----------+-----------+---------+------+--------+----------+------+
+| SSN002 | ADINATH  | NIKAM     | US      | M    | 550000 | NULL     | NULL |
+| SSN003 | AYAZ     | PACHAPURE | UK      | M    | 350000 | NULL     | NULL |
+| SSN004 | ASHITOSH | GOLBANVI  | CHINA   | M    | 250000 | NULL     | NULL |
+| SSN005 | DARSHAN  | PATIL     | US      | M    | 700000 | NULL     | NULL |
+| SSN006 | RUPESH   | NERSEKAR  | CHINA   | M    | 750000 | NULL     | NULL |
+| SSN007 | XAVIER   | DSOUZA    | US      | M    | 400000 | NULL     | NULL |
+| SSN008 | DAVID    | PATRICK   | US      | M    | 300000 | NULL     | NULL |
++--------+----------+-----------+---------+------+--------+----------+------+
+7 rows in set (0.00 sec)
+
+mysql> UPDATE EMPLOYEE SET SUPERSSN=NULL, DNO='3' WHERE SSN='SSN008';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM EMPLOYEE;
++--------+----------+-----------+---------+------+--------+----------+------+
+| SSN    | FNAME    | LNAME     | ADDRESS | SEX  | SALARY | SUPERSSN | DNO  |
++--------+----------+-----------+---------+------+--------+----------+------+
+| SSN002 | ADINATH  | NIKAM     | US      | M    | 550000 | SSN002   | 2    |
+| SSN003 | AYAZ     | PACHAPURE | UK      | M    | 350000 | NULL     | NULL |
+| SSN004 | ASHITOSH | GOLBANVI  | CHINA   | M    | 250000 | NULL     | NULL |
+| SSN005 | DARSHAN  | PATIL     | US      | M    | 700000 | NULL     | NULL |
+| SSN006 | RUPESH   | NERSEKAR  | CHINA   | M    | 750000 | NULL     | NULL |
+| SSN007 | XAVIER   | DSOUZA    | US      | M    | 400000 | NULL     | NULL |
+| SSN008 | DAVID    | PATRICK   | US      | M    | 300000 | NULL     | 3    |
++--------+----------+-----------+---------+------+--------+----------+------+
+7 rows in set (0.00 sec)
+
+mysql> DELETE FROM EMPLOYEE WHERE DNO=3;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> COMMIT;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> ROLLBACK;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEE;
++--------+----------+-----------+---------+------+--------+----------+------+
+| SSN    | FNAME    | LNAME     | ADDRESS | SEX  | SALARY | SUPERSSN | DNO  |
++--------+----------+-----------+---------+------+--------+----------+------+
+| SSN002 | ADINATH  | NIKAM     | US      | M    | 550000 | SSN002   | 2    |
+| SSN003 | AYAZ     | PACHAPURE | UK      | M    | 350000 | NULL     | NULL |
+| SSN004 | ASHITOSH | GOLBANVI  | CHINA   | M    | 250000 | NULL     | NULL |
+| SSN005 | DARSHAN  | PATIL     | US      | M    | 700000 | NULL     | NULL |
+| SSN006 | RUPESH   | NERSEKAR  | CHINA   | M    | 750000 | NULL     | NULL |
+| SSN007 | XAVIER   | DSOUZA    | US      | M    | 400000 | NULL     | NULL |
++--------+----------+-----------+---------+------+--------+----------+------+
+6 rows in set (0.00 sec)
+
+

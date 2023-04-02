@@ -1,0 +1,261 @@
+Perform the String Functions, Date functions and Mathematical functions supported by Oracle
+
+
+mysql> select ascii('t') from dual;
++------------+
+| ascii('t') |
++------------+
+|        116 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select ascii('a') from dual;
++------------+
+| ascii('a') |
++------------+
+|         97 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select ascii('A') from dual;
++------------+
+| ascii('A') |
++------------+
+|         65 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select ascii('Z') from dual;
++------------+
+| ascii('Z') |
++------------+
+|         90 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select ascii('z') from dual;
++------------+
+| ascii('z') |
++------------+
+|        122 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT UPPER('bldea sb arts and kcp science college') from dual;
++------------------------------------------------+
+| UPPER('bldea sb arts and kcp science college') |
++------------------------------------------------+
+| BLDEA SB ARTS AND KCP SCIENCE COLLEGE          |
++------------------------------------------------+
+1 row in set (0.01 sec)
+
+mysql> select LOWER('welcome to dbms lab') from dual;
++------------------------------+
+| LOWER('welcome to dbms lab') |
++------------------------------+
+| welcome to dbms lab          |
++------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select LOWER('WELCOME TO DBMSLAB') from dual;
++-----------------------------+
+| LOWER('WELCOME TO DBMSLAB') |
++-----------------------------+
+| welcome to dbmslab          |
++-----------------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT REPLACE('HELLO','H','K') FROM DUAL;
++--------------------------+
+| REPLACE('HELLO','H','K') |
++--------------------------+
+| KELLO                    |
++--------------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT REPLACE('COMPUTER','C','K') FROM DUAL;
++-----------------------------+
+| REPLACE('COMPUTER','C','K') |
++-----------------------------+
+| KOMPUTER                    |
++-----------------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT REPLACE('HELLO','L','A') FROM DUAL;
++--------------------------+
+| REPLACE('HELLO','L','A') |
++--------------------------+
+| HEAAO                    |
++--------------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT TRIM('A' FROM 'ANACONDA') FROM DUAL;
++---------------------------+
+| TRIM('A' FROM 'ANACONDA') |
++---------------------------+
+| NACOND                    |
++---------------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT CURRENT_DATE FROM DUAL;
++--------------+
+| CURRENT_DATE |
++--------------+
+| 2022-11-30   |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT EXTRACT(MONTH FROM CURRENT_DATE) FROM DUAL;
++----------------------------------+
+| EXTRACT(MONTH FROM CURRENT_DATE) |
++----------------------------------+
+|                               11 |
++----------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select ABS(-100) from dual;
++-----------+
+| ABS(-100) |
++-----------+
+|       100 |
++-----------+
+1 row in set (0.01 sec)
+
+mysql> select ABS(-6) from dual;
++---------+
+| ABS(-6) |
++---------+
+|       6 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select FLOOR(2345.78) FROM DUAL;
++----------------+
+| FLOOR(2345.78) |
++----------------+
+|           2345 |
++----------------+
+1 row in set (0.01 sec)
+
+mysql> SELECT GREATEST(23,67,90,123,78,50) FROM DUAL;
++------------------------------+
+| GREATEST(23,67,90,123,78,50) |
++------------------------------+
+|                          123 |
++------------------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT LEAST(34, 21,67,11,89,9) FROM DUAL;
++--------------------------+
+| LEAST(34, 21,67,11,89,9) |
++--------------------------+
+|                        9 |
++--------------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT LENGTH('RAJESHWARI') FROM DUAL;
++----------------------+
+| LENGTH('RAJESHWARI') |
++----------------------+
+|                   10 |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT LENGTH(17245637) FROM DUAL;
++------------------+
+| LENGTH(17245637) |
++------------------+
+|                8 |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT SQRT(16) FROM DUAL;
++----------+
+| SQRT(16) |
++----------+
+|        4 |
++----------+
+1 row in set (0.01 sec)
+
+mysql> SELECT SQRT(99) FROM DUAL;
++-----------------+
+| SQRT(99)        |
++-----------------+
+| 9.9498743710662 |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT POWER(2,4) FROM DUAL;
++------------+
+| POWER(2,4) |
++------------+
+|         16 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT ROUND(1001.6) FROM DUAL;
++---------------+
+| ROUND(1001.6) |
++---------------+
+|          1002 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT SIN(90) FROM DUAL;
++--------------------+
+| SIN(90)            |
++--------------------+
+| 0.8939966636005579 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT TAN(30) FROM DUAL;
++--------------------+
+| TAN(30)            |
++--------------------+
+| -6.405331196646276 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT SIGN(-128) FROM DUAL;
++------------+
+| SIGN(-128) |
++------------+
+|         -1 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT LN(100) FROM DUAL;
++-------------------+
+| LN(100)           |
++-------------------+
+| 4.605170185988092 |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT EXP(-2) FROM DUAL;
++--------------------+
+| EXP(-2)            |
++--------------------+
+| 0.1353352832366127 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT MOD(4,2) FROM DUAL;
++----------+
+| MOD(4,2) |
++----------+
+|        0 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT LOG(100,10) FROM DUAL;
++-------------+
+| LOG(100,10) |
++-------------+
+|         0.5 |
++-------------+
+1 row in set (0.00 sec)
+
+
+
