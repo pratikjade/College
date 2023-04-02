@@ -1,0 +1,6 @@
+explain basic data type in c ++
+what are user define data types and derive data types
+explain memeory management operators
+explain all control structure (sequence select loop)
+
+ 

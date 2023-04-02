@@ -1,0 +1,9 @@
+Define a class to represent a bank account. Include the following members:
+Data members: - Name of depositor, Account number, Type of account, Balance amount in the account
+
+Member functions: - To assign initial values, To deposit an amount, To withdraw an amount after checking the balance, To display name & balance
+Write a main program to test program using class and object.
+
+object are basic runtime entities they are represent the pace table of data or any item which program have to handle
+object contain data and code of objecrt made to maintain that data the entire state of data and code of an object can be made of user define data type with help of class the object are the variable of types of class
+we can create any no. of object belonging to that class 
