@@ -1,0 +1,10 @@
+The time complexity of the iterative design for calculating the factorial of a positive integer is O(n), where n is the input number.
+The time complexity of the recursive design for calculating the factorial of a positive integer is also O(n).
+This is because each recursive call generates two more recursive calls, and the number of calls is proportional to the input number.
+Time Complexity:
+Iterative: O(n)
+Recursive: O(n)
+
+Space Complexity:
+Iterative: O(1)
+Recursive: O(n)
